@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Configuración para GitHub Pages
+  output: 'export',
+  basePath: process.env.NODE_ENV === 'production' ? '/test-todo-nextjs' : '',
+  
   images: {
+    // Desactiva la optimización de imágenes para static export
+    unoptimized: true,
     // Permite imágenes de cualquier dominio usando remotePatterns
     remotePatterns: [
       {
@@ -13,8 +19,6 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ],
-    // Desactiva la optimización para URLs externas problemáticas
-    unoptimized: false,
     // Formatos de imagen soportados
     formats: ['image/webp', 'image/avif'],
     // Configuración adicional para permitir cualquier origen
